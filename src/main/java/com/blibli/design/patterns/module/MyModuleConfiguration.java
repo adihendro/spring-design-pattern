@@ -12,6 +12,7 @@ public class MyModuleConfiguration {
     @RestController
     public static class MyModuleController {
 
+
         @GetMapping("/my-module")
         public String index() {
             return "MY MODULE CONTROLLER";
