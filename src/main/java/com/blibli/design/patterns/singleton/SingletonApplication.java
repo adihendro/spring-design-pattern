@@ -11,18 +11,21 @@ public class SingletonApplication {
     public static class Configuration {
         @Bean
         public Contoh contoh(){
-            return new Contoh();
+            Contoh contoh = new Contoh();
+            contoh.name = "adi";
+            return contoh;
         }
     }
 
     public static class Contoh{
-
+        public String name;
     }
 
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(SingletonApplication.Configuration.class);
 
         Contoh contoh1 = context.getBean(Contoh.class);
+        System.out.println(contoh1.name);
         Contoh contoh2 = context.getBean(Contoh.class);
 
 //        Contoh contoh1 = new Contoh();
