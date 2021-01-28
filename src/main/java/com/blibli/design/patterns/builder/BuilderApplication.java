@@ -17,7 +17,7 @@ public class BuilderApplication {
         private String nama;
         private String alamat;
         private Date tanggalLahir;
-        @Singular ("hobi");
+        @Singular ("hobi")
         private List<String> hobi;
     }
 
