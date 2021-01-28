@@ -19,6 +19,10 @@ public class ObserverApplication {
 
     }
 
+    public static class Customer {
+
+    }
+
     public static class ProductEvent extends ApplicationEvent {
 
         public ProductEvent(Product source) {
@@ -31,14 +35,14 @@ public class ObserverApplication {
         @Setter
         private ApplicationEventPublisher applicationEventPublisher;
 
-        public void save(Product product){
+        public void save(Product product) {
             System.out.println("Done save to database");
             applicationEventPublisher.publishEvent(new ProductEvent(product));
         }
 
     }
 
-    public static class MessageBrokerObserver implements ApplicationListener<ProductEvent>{
+    public static class MessageBrokerObserver implements ApplicationListener<ProductEvent> {
 
         @Override
         public void onApplicationEvent(ProductEvent event) {
@@ -46,7 +50,7 @@ public class ObserverApplication {
         }
     }
 
-    public static class RedisObserver implements ApplicationListener<ApplicationEvent>{
+    public static class RedisObserver implements ApplicationListener<ApplicationEvent> {
 
         @Override
         public void onApplicationEvent(ApplicationEvent event) {
@@ -54,7 +58,7 @@ public class ObserverApplication {
         }
     }
 
-    public static class LogObserver implements ApplicationListener<ProductEvent>{
+    public static class LogObserver implements ApplicationListener<ProductEvent> {
 
         @Override
         public void onApplicationEvent(ProductEvent event) {
@@ -66,21 +70,21 @@ public class ObserverApplication {
     public static class Application {
 
         @Bean
-        public ProductRepository productRepository(){
+        public ProductRepository productRepository() {
             return new ProductRepository();
         }
 
         @Bean
-        public MessageBrokerObserver messageBrokerObserver(){
+        public MessageBrokerObserver messageBrokerObserver() {
             return new MessageBrokerObserver();
         }
 
-        public RedisObserver redisObserver(){
+        public RedisObserver redisObserver() {
             return new RedisObserver();
         }
 
         @Bean
-        public LogObserver logObserver(){
+        public LogObserver logObserver() {
             return new LogObserver();
         }
 
